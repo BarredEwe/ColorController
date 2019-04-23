@@ -1,0 +1,6 @@
+framework module ColorController {
+  umbrella header "ColorController-umbrella.h"
+
+  export *
+  module * { export * }
+}
