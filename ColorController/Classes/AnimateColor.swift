@@ -53,27 +53,27 @@ public extension AnimateColor where Self: UIViewController {
     }
 }
 
-public class ColorTableViewController: UITableViewController, AnimateColor {
+open class ColorTableViewController: UITableViewController, AnimateColor {
 
     public var destinationColor = UIColor.groupTableViewBackground
     public var currentColor = UIColor.groupTableViewBackground
 
-    override public func viewWillAppear(_ animated: Bool) {
+    override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewWillAppearAnimateColor()
     }
 
-    override public func viewDidAppear(_ animated: Bool) {
+    override open func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         viewDidAppearAnimateColor()
     }
 
-    override public func viewWillDisappear(_ animated: Bool) {
+    override open func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         viewWillDisappearAnimateColor()
     }
 
-    override public func willMove(toParent parent: UIViewController?) {
+    override open func willMove(toParent parent: UIViewController?) {
         if let navigationController = parent as? UINavigationController, let color = navigationController.navigationBar.barTintColor {
             destinationColor = color
         }
@@ -82,27 +82,27 @@ public class ColorTableViewController: UITableViewController, AnimateColor {
     }
 }
 
-public class ColorViewController: UIViewController, AnimateColor {
+open class ColorViewController: UIViewController, AnimateColor {
 
     public var destinationColor = UIColor.groupTableViewBackground
     public var currentColor = UIColor.groupTableViewBackground
 
-    override public func viewWillAppear(_ animated: Bool) {
+    override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewWillAppearAnimateColor()
     }
 
-    override public func viewDidAppear(_ animated: Bool) {
+    override open func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         viewDidAppearAnimateColor()
     }
 
-    override public func viewWillDisappear(_ animated: Bool) {
+    override open func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         viewWillDisappearAnimateColor()
     }
 
-    override public func willMove(toParent parent: UIViewController?) {
+    override open func willMove(toParent parent: UIViewController?) {
         if let navigationController = parent as? UINavigationController, let color = navigationController.navigationBar.barTintColor {
             destinationColor = color
         }
