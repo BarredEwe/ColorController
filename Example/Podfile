@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'ColorController_Example' do
+  pod 'ColorController', :path => '../'
+
+  target 'ColorController_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
