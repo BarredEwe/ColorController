@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ColorController'
-  s.version          = '0.1.1'
+  s.version          = '0.1.2'
   s.summary          = 'With the help of ColorController, you can make transitions with animation of the color of StatusBar and NavigationBar.'
 
 # This description is used to generate tags and improve search results.
@@ -23,7 +23,7 @@ TODO: Add long description of the pod here.
 
   s.homepage         = 'https://github.com/BarredEwe/ColorController'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'BarredEwe' => 'barredewe@grishutin.com' }
+  s.author           = { 'BarredEwe' => 'barredewe@gmail.com' }
   s.source           = { :git => 'https://github.com/BarredEwe/ColorController.git', :tag => s.version.to_s }
   s.swift_version = '4.2'
   s.ios.deployment_target = '8.0'

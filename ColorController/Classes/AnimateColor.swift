@@ -1,6 +1,6 @@
 //
-//  Created by grishutin on 20/04/2018.
-//  Copyright © 2018 bifit. All rights reserved.
+//  Created by BarredEwe on 04/23/2019.
+//  Copyright (c) 2019 BarredEwe. All rights reserved.
 //
 
 import UIKit
@@ -12,37 +12,38 @@ public protocol AnimateColor {
 
 public extension AnimateColor where Self: UIViewController {
 
-    public func viewWillAppearAnimateColor() {
+    func viewWillAppearAnimateColor() {
         updateNavigationBar(with: currentColor)
         animateNavigationBarColors()
     }
 
-    public func viewDidAppearAnimateColor() {
+    func viewDidAppearAnimateColor() {
         updateNavigationBar(with: currentColor)
     }
 
-    public func viewWillDisappearAnimateColor() {
+    func viewWillDisappearAnimateColor() {
         updateNavigationBar(with: destinationColor)
     }
 
-    public func willMoveAnimateColor() {
-        navigationController?.navigationBar.barTintColor = destinationColor
-        navigationController?.navigationBar.barStyle = isLight(destinationColor) ? .default : .black
+    func willMoveAnimateColor() {
+        navigationController?.navigationBar.setBarTintColor(destinationColor)
+        navigationController?.navigationBar.setStatusBarStyle(isLight(destinationColor) ? .default : .black)
+        navigationController?.setNeedsStatusBarAppearanceUpdate()
     }
 
     // MARK: Private methods
     private func updateNavigationBar(with color: UIColor) {
-        navigationController?.navigationBar.barTintColor = currentColor
-        navigationController?.navigationBar.tintColor = isLight(currentColor) ? UIColor.darkGray : UIColor.white
-        navigationController?.navigationBar.barStyle = isLight(currentColor) ? .default : .black
+        navigationController?.navigationBar.setBarTintColor(currentColor)
+        navigationController?.navigationBar.setTintColor(isLight(currentColor) ? UIColor.darkGray : UIColor.white)
+        navigationController?.navigationBar.setStatusBarStyle(isLight(currentColor) ? .default : .black)
+        navigationController?.setNeedsStatusBarAppearanceUpdate()
     }
 
     private func animateNavigationBarColors() {
         guard let coordinator = self.transitionCoordinator else { return }
-
         coordinator.animate(alongsideTransition: { [unowned self] _ in
-            self.navigationController?.navigationBar.barTintColor = self.currentColor
-            self.navigationController?.navigationBar.tintColor = self.isLight(self.currentColor) ? UIColor.darkGray : UIColor.white
+            self.navigationController?.navigationBar.setBarTintColor(self.currentColor)
+            self.navigationController?.navigationBar.setTintColor(self.isLight(self.currentColor) ? UIColor.darkGray : UIColor.white)
             }, completion: nil)
     }
 
@@ -50,63 +51,5 @@ public extension AnimateColor where Self: UIViewController {
         var white: CGFloat = 0
         color.getWhite(&white, alpha: nil)
         return white > 0.8
-    }
-}
-
-open class ColorTableViewController: UITableViewController, AnimateColor {
-
-    public var destinationColor = UIColor.groupTableViewBackground
-    public var currentColor = UIColor.groupTableViewBackground
-
-    override open func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        viewWillAppearAnimateColor()
-    }
-
-    override open func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        viewDidAppearAnimateColor()
-    }
-
-    override open func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        viewWillDisappearAnimateColor()
-    }
-
-    override open func willMove(toParent parent: UIViewController?) {
-        if let navigationController = parent as? UINavigationController, let color = navigationController.navigationBar.barTintColor {
-            destinationColor = color
-        }
-        willMoveAnimateColor()
-        super.willMove(toParent: parent)
-    }
-}
-
-open class ColorViewController: UIViewController, AnimateColor {
-
-    public var destinationColor = UIColor.groupTableViewBackground
-    public var currentColor = UIColor.groupTableViewBackground
-
-    override open func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        viewWillAppearAnimateColor()
-    }
-
-    override open func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        viewDidAppearAnimateColor()
-    }
-
-    override open func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        viewWillDisappearAnimateColor()
-    }
-
-    override open func willMove(toParent parent: UIViewController?) {
-        if let navigationController = parent as? UINavigationController, let color = navigationController.navigationBar.barTintColor {
-            destinationColor = color
-        }
-        willMoveAnimateColor()
-        super.willMove(toParent: parent)
     }
 }

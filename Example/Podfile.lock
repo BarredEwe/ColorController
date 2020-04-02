@@ -1,5 +1,5 @@
 PODS:
-  - ColorController (0.1.0)
+  - ColorController (0.1.2)
 
 DEPENDENCIES:
   - ColorController (from `../`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  ColorController: efbf6e6f6fec1f7c22d7fa132f2a977f0c782bb1
+  ColorController: 37b3ffe9f6480b24395afd29f648476fc9e0ff4f
 
-PODFILE CHECKSUM: c0ee1c514e5bb0b7e19d93a16676f3b74f839ea6
+PODFILE CHECKSUM: aad13dccae98aacac1687de46e19448fa666417b
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.9.1
