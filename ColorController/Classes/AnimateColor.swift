@@ -27,15 +27,15 @@ public extension AnimateColor where Self: UIViewController {
 
     func willMoveAnimateColor() {
         navigationController?.navigationBar.setBarTintColor(destinationColor)
-        navigationController?.navigationBar.setStatusBarStyle(isLight(destinationColor) ? .default : .black)
+        navigationController?.navigationBar.setStatusBarStyle(destinationColor.isLight ? .default : .black)
         navigationController?.setNeedsStatusBarAppearanceUpdate()
     }
 
-    // MARK: Private methods
+    // MARK: Private Methods
     private func updateNavigationBar(with color: UIColor) {
         navigationController?.navigationBar.setBarTintColor(currentColor)
-        navigationController?.navigationBar.setTintColor(isLight(currentColor) ? UIColor.darkGray : UIColor.white)
-        navigationController?.navigationBar.setStatusBarStyle(isLight(currentColor) ? .default : .black)
+        navigationController?.navigationBar.setTintColor(currentColor.contrastAnimateColor)
+        navigationController?.navigationBar.setStatusBarStyle(currentColor.isLight ? .default : .black)
         navigationController?.setNeedsStatusBarAppearanceUpdate()
     }
 
@@ -43,13 +43,7 @@ public extension AnimateColor where Self: UIViewController {
         guard let coordinator = self.transitionCoordinator else { return }
         coordinator.animate(alongsideTransition: { [unowned self] _ in
             self.navigationController?.navigationBar.setBarTintColor(self.currentColor)
-            self.navigationController?.navigationBar.setTintColor(self.isLight(self.currentColor) ? UIColor.darkGray : UIColor.white)
+            self.navigationController?.navigationBar.setTintColor(self.currentColor.contrastAnimateColor)
             }, completion: nil)
-    }
-
-    private func isLight(_ color: UIColor) -> Bool {
-        var white: CGFloat = 0
-        color.getWhite(&white, alpha: nil)
-        return white > 0.8
     }
 }

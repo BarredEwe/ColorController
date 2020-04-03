@@ -29,7 +29,7 @@
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		69B9D307D3E2BD86FB741738 /* ColorController.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = ColorController.podspec; path = ../ColorController.podspec; sourceTree = "<group>"; };
+		69B9D307D3E2BD86FB741738 /* ColorController.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = ColorController.podspec; path = ../ColorController.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		6F6A2A9FBB0E7609BD23F0B1 /* Pods_ColorController_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ColorController_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		779A6D680185B60EF7C64CEF /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		828A7A8C46B0198F6C6C5C9D /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
