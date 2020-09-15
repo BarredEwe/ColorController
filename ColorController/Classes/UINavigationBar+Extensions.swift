@@ -1,18 +1,13 @@
-//
-//  Created by BarredEwe on 04/23/2019.
-//  Copyright (c) 2019 BarredEwe. All rights reserved.
-//
-
 import UIKit
 
 extension UINavigationBar {
     func setBarTintColor(_ color: UIColor) {
         if #available(iOS 13.0, *) {
             standardAppearance.backgroundColor = color
+            compactAppearance?.backgroundColor = color
             scrollEdgeAppearance?.backgroundColor = color
-        } else {
-            barTintColor = color
         }
+        barTintColor = color
     }
 
     func setStatusBarStyle(_ style: UIBarStyle) {
@@ -24,17 +19,23 @@ extension UINavigationBar {
 
     func setTintColor(_ color: UIColor) {
         if #available(iOS 13.0, *) {
-            standardAppearance.titleTextAttributes = [.foregroundColor: color]
-            standardAppearance.largeTitleTextAttributes = [.foregroundColor: color]
-            scrollEdgeAppearance?.titleTextAttributes = [.foregroundColor: color]
-            scrollEdgeAppearance?.largeTitleTextAttributes = [.foregroundColor: color]
+            let appearance = standardAppearance
+            appearance.titleTextAttributes = [.foregroundColor: color]
+            appearance.largeTitleTextAttributes = [.foregroundColor: color]
+            standardAppearance = appearance
+            compactAppearance = appearance
+            scrollEdgeAppearance = appearance
         }
         tintColor = color
+        titleTextAttributes = [.foregroundColor: color]
+        if #available(iOS 11.0, *) {
+            largeTitleTextAttributes = [.foregroundColor: color]
+        }
     }
 
     func getBarTintColor() -> UIColor? {
         if #available(iOS 13.0, *) {
-            return standardAppearance.backgroundColor
+            return standardAppearance.backgroundColor ?? barTintColor
         } else {
             return barTintColor
         }

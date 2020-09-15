@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  ColorController
-//
-//  Created by BarredEwe on 04/23/2019.
-//  Copyright (c) 2019 BarredEwe. All rights reserved.
-//
-
 import UIKit
 
 @UIApplicationMain
